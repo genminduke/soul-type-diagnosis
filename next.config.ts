@@ -1,0 +1,29 @@
+import type { NextConfig } from "next";
+
+const wpDomain = process.env.NEXT_PUBLIC_WP_DOMAIN || "https://example.com";
+
+const nextConfig: NextConfig = {
+  async headers() {
+    return [
+      {
+        source: "/(.*)",
+        headers: [
+          {
+            key: "Content-Security-Policy",
+            value: `frame-ancestors 'self' ${wpDomain};`,
+          },
+          {
+            key: "X-Content-Type-Options",
+            value: "nosniff",
+          },
+          {
+            key: "Referrer-Policy",
+            value: "strict-origin-when-cross-origin",
+          },
+        ],
+      },
+    ];
+  },
+};
+
+export default nextConfig;

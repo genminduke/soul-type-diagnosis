@@ -160,16 +160,24 @@ export default function Home() {
               <p>{result.sessionDescription}</p>
             </div>
 
-            <div className="ctaBox">
-              <h3>魂タイプ別メッセージをLINEで受け取る</h3>
-              <p>
-                あなたの魂タイプの詳しい解説と、今のあなたに必要なメッセージをLINEでお届けします。
-              </p>
-              <a className="lineButton" href={lineUrl} target="_blank" rel="noopener noreferrer" onClick={clickLine}>
-                LINEで詳しい診断結果を受け取る
-              </a>
-              <p className="small">※LINE公式アカウントのURLは環境変数で差し替えできます。</p>
-            </div>
+ <div className="ctaBox">
+  <h3>魂タイプ別メッセージをLINEで受け取る</h3>
+  <p>
+    あなたの魂タイプの詳しい解説と、今のあなたに必要なメッセージをLINEでお届けします。
+  </p>
+
+  <div className="diagnosisCodeBox">
+    <p className="diagnosisCodeLabel">あなたの診断コード：{resultKey}</p>
+    <p className="diagnosisCodeText">
+      LINE登録後に「{resultKey}」と送ると、詳しい解説が届きます。
+    </p>
+  </div>
+
+  <a className="lineButton" href={lineUrl} target="_blank" rel="noopener noreferrer" onClick={clickLine}>
+    LINEで詳しい診断結果を受け取る
+  </a>
+  <p className="small">※LINE登録後、診断コードを1文字で送ってください。</p>
+</div>
 
             <div className="actions">
               <button className="secondaryButton" onClick={restart}>もう一度診断する</button>
